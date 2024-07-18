@@ -4,10 +4,10 @@
     background-color: #ffff00;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .logo img {
     margin-top: 8px;
-    margin-left: 10px;
     width: 200px;
 }
 .search {
@@ -20,7 +20,7 @@
     width: 100%;
     border: none;
     border-radius: 10px;
-    padding-left: 10px;
+    padding-left: 15px;
     padding-right: 40px;
     box-sizing: border-box;
     font-size: 18px;
@@ -28,14 +28,13 @@
 .search-icon {
     position: absolute;
     right: 10px;
-    top: 15%;
+    top: 18%;
 }
-.navbar-right {
-    margin-left: auto;
+.product-portfolio {
     height: 100%;
     align-items: center;
 }
-.navbar-right nav {
+.product-portfolio nav {
     display: flex;
 }
 .nav-item {

@@ -27,7 +27,7 @@ export default function () {
           />
           <SearchIcon className='search-icon'/>
         </div>
-        <div className='navbar-right'>
+        <div className='product-portfolio'>
           <nav>
             <a href="#" title="Máy ps4, switch, xbox" className='nav-item'>
               <img src={PS4} className='nav-img'/>

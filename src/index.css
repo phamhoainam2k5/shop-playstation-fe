@@ -10,3 +10,6 @@ a {
 a:hover {
   color: rgba(0, 0, 0, 1);
 }
+#root {
+  background-color: #f0f0f0;
+}
