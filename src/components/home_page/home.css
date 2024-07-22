@@ -47,6 +47,7 @@
 .product-item h3 {
     font-size: 16px;
     color: black;
+    height: 36px;
 }
 .product-item h3:hover {
     color: #004f8f;
