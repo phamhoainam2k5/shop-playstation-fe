@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import "./home.css"
 
 import Banner from "../static/img/Header-Banner-PlayStation.png"
@@ -77,83 +79,88 @@ export default function Home() {
     );
 
 return (
-    <div className='home-container'>
-        <div className='row'>
-            <div className='banner'>
-                <img src={Banner} alt="banner" />
-            </div>
-            <div className='featured-products'>
-                <div className='title'>
-                    <h2>Sản phẩm nổi bật</h2>
+    <>
+        <Header />
+        <div className='home-container'>
+            <div className='row'>
+                <div className='banner'>
+                    <img src={Banner} alt="banner" />
                 </div>
-                <div class="product-grid">
-                    {featuredProducts.map(renderProductItem)}
+                <div className='featured-products'>
+                    <div className='title'>
+                        <h2>Sản phẩm nổi bật</h2>
+                    </div>
+                    <div class="product-grid">
+                        {featuredProducts.map(renderProductItem)}
+                    </div>
                 </div>
-            </div>
-            <div className="game-console">
-                <div className='title'>
-                    <h2>Máy Game</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
+                <div className="game-console">
+                    <div className='title'>
+                        <h2>Máy Game</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {gameConsoleProducts.map(renderProductItem)}
+                    </div>
                 </div>
-                <div class="product-grid">
-                    {gameConsoleProducts.map(renderProductItem)}
+                <div className="game-disc">
+                    <div className='title'>
+                        <h2>Tay Cầm</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {gameControllerProducts.map(renderProductItem)}
+                    </div>
                 </div>
-            </div>
-            <div className="game-disc">
-                <div className='title'>
-                    <h2>Tay Cầm</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
+                <div className="game-disc">
+                    <div className='title'>
+                        <h2>Đĩa Game</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {gameDiscProducts.map(renderProductItem)}
+                    </div>
                 </div>
-                <div class="product-grid">
-                    {gameControllerProducts.map(renderProductItem)}
+                <div className="game-card">
+                    <div className='title'>
+                        <h2>Thẻ Game</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {cardGameProducts.map(renderProductItem)}
+                    </div>
                 </div>
-            </div>
-            <div className="game-disc">
-                <div className='title'>
-                    <h2>Đĩa Game</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
+                <div className="switch">
+                    <div className='title'>
+                        <h2>Switch Nitendo</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {nitendoSwitchProducts.map(renderProductItem)}
+                    </div>
                 </div>
-                <div class="product-grid">
-                    {gameDiscProducts.map(renderProductItem)}
+                <div className="accessory">
+                    <div className='title'>
+                        <h2>Phụ Kiện</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {accessoryProducts.map(renderProductItem)}
+                    </div>
                 </div>
-            </div>
-            <div className="game-card">
-                <div className='title'>
-                    <h2>Thẻ Game</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
-                </div>
-                <div class="product-grid">
-                    {cardGameProducts.map(renderProductItem)}
-                </div>
-            </div>
-            <div className="switch">
-                <div className='title'>
-                    <h2>Switch Nitendo</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
-                </div>
-                <div class="product-grid">
-                    {nitendoSwitchProducts.map(renderProductItem)}
-                </div>
-            </div>
-            <div className="accessory">
-                <div className='title'>
-                    <h2>Phụ Kiện</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
-                </div>
-                <div class="product-grid">
-                    {accessoryProducts.map(renderProductItem)}
-                </div>
-            </div>
-            <div className="hard-drive">
-                <div className='title'>
-                    <h2>Ổ Cứng</h2>
-                    <span className='see-all'><a href="">Xem tất cả</a></span>
-                </div>
-                <div class="product-grid">
-                    {hardDriveProducts.map(renderProductItem)}
+                <div className="hard-drive">
+                    <div className='title'>
+                        <h2>Ổ Cứng</h2>
+                        <span className='see-all'><a href="">Xem tất cả</a></span>
+                    </div>
+                    <div class="product-grid">
+                        {hardDriveProducts.map(renderProductItem)}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+        <Footer />
+    </>
+    
 )
 }
