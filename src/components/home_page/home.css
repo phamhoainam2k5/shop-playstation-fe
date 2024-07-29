@@ -30,10 +30,9 @@
 .title .see-all a:hover {
     color: #004f8f;
 }
-.product-grid {
+/* .product-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    /* grid-gap: 20px; */
 }
 .product-item {
     background-color: #fff;
@@ -68,4 +67,4 @@
     font-size: 14px;
     color: #888;
     margin-top: 5px;
-}
+} */

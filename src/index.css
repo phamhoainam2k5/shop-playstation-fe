@@ -11,5 +11,44 @@ a:hover {
   color: rgba(0, 0, 0, 1);
 }
 #root {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
+}
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  /* grid-gap: 20px; */
+}
+.product-item {
+  background-color: #fff;
+  padding: 5px 10px 15px 10px;
+  cursor: pointer;
+}
+.product-item img {
+  max-width: 100%;
+  height: auto;
+}
+.product-item h3 {
+  font-size: 15px;
+  color: black;
+  height: 35px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+}
+.product-item h3:hover {
+  color: #004f8f;
+}
+.product-item .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #FF0000;
+  margin-top: 5px;
+}
+.product-item .sold {
+  font-size: 14px;
+  color: #888;
+  margin-top: 5px;
 }

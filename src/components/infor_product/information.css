@@ -1,0 +1,156 @@
+.infor-container {
+    width: 61%;
+    margin: 10px auto;
+}
+.title-product {
+    display: flex;
+    padding: 10px 0;
+    border-bottom: 1px solid #a3a3a3;
+}
+.title-product h1 {
+    float: left;
+    overflow: hidden;
+    font-size: 32px;
+    font-weight: 100;
+    color: #333;
+    line-height: 40px;
+}
+.title-product span {
+    line-height: 40px;
+    margin-left: 30px;
+}
+.image-product img {
+    max-height: 400px;
+    height: 100%;
+}
+.product-details {
+    display: flex;
+    width: 100%;
+    padding: 10px 0;
+}
+.details {
+    float: left;
+    margin-left: 20px;
+    width: 40%;
+}
+.details .product-description {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #a3a3a3;
+}
+.details .product-description p {
+    font-size: 16px;
+    line-height: 24px;
+    padding-left: 10px;
+}
+.details .brand-and-review {
+    padding: 20px 0 10px 0;
+    border-bottom: 1px solid #a3a3a3;
+    display: flex;
+}
+.details .brand-and-review .brand {
+    padding-left: 10px;
+}
+.details .brand-and-review .rating {
+    margin-left: 20px;
+}
+.details .brand-and-review .rating a {
+    color: blue;
+}
+.details .price-and-status {
+    padding-top: 20px;
+}
+.price {
+    font-size: 14px;
+    line-height: 24px;
+    padding-left: 10px;
+}
+.price > span {
+    width: 150px;
+    display: inline-block;
+}
+.price strong {
+    font-size: 32px;
+    color: red;
+}
+.price em {
+    color: #f53;
+    margin-left: 15px;
+}
+.price label {
+    color: #f53;
+}
+.details .more-information {
+    background: #fff;
+    border: 1px solid #f1f1f1;
+    border-radius: 4px;
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin-top: 10px;
+}
+.details .more-information .protit {
+    background: #f1f1f1;
+    color: #333;
+    display: block;
+    font-size: 15px;
+    font-weight: normal;
+    overflow: hidden;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.details .more-information .prob {
+    padding: 5px 9px 5px;
+}
+.details .more-information .prob p {
+    float: left;
+    padding: 5px 0;
+    line-height: 16px;
+    display: block;
+    width: 100%;
+}
+.details .more-information .prob p::before {
+    content: "•";
+    color: #22b15c;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin-right: 5px;
+}
+.product-details .incentives {
+    margin: 0 0 0 10px;
+    width: 400px;
+    float: right;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.policy {
+    display: block;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+.policy li {
+    display: flex; /* Thay đổi từ block sang flex */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    overflow: hidden;
+    padding: 10px 0 10px 10px;
+    font-size: 16px;
+    color: #555;
+    line-height: 20px;
+    margin: 0 10px;
+    border-bottom: solid 1px #f0f0f0;
+    position: relative;
+}
+.policy li img {
+    width: 20px;
+    margin-right: 10px;
+}
+.policy li:first-child {
+    padding-top: 0;
+}
+.policy li:last-child {
+    border-bottom: none;
+}
