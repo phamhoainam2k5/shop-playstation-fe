@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import "./information.css"
@@ -6,7 +6,14 @@ import "./information.css"
 import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
 import done from "../static/icons/icons8-done-64.png"
 
-export default function information() {
+export default function Information() {
+  const [quantity, setQuantity] = useState(1);
+
+  const handleInputChange = (e) => {
+    const value = Math.max(1, e.target.value);
+    setQuantity(value);
+  };
+
   return (
     <>
       <Header />
@@ -25,16 +32,22 @@ export default function information() {
             </li>
           </ul>
         </div>
+        {/* THÔNG TIN CHUNG CỦA SẢN PHẨM */}
         <div className='infor-product'>
+          {/* TIÊU ĐỀ SẢN PHẨM */}
           <div className="title-product" id='title'>
             <h1>Máy Nintendo Switch Oled Mới - White set</h1>
             <span>Mã SP: 4902370548532</span>
           </div>
+          {/* THÔNG TIN CƠ BẢN SẢN PHẨM */}
           <div className='product-details' id='details'>
+            {/* ẢNH SẢN PHẨM */}
             <div className='image-product'>
               <img src={MayPS5} alt="" />
             </div>
+            {/* THÔNG TIN CHUNG */}
             <div className='details'>
+              {/* MÔ TẢ NGẮN GỌN SẢN PHẨM */}
               <div className='product-description'>
                 <p className='content'>
                   Máy PS5 có khả năng chơi game cực kỳ đỉnh, trải nghiệm tải nhanh như chớp 
@@ -42,6 +55,7 @@ export default function information() {
                   giác, Âm thanh 3D và thế hệ trò chơi PlayStation hoàn toàn mới.
                 </p>
               </div>
+              {/* HÃNG VỚI ĐÁNH GIÁ */}
               <div className='brand-and-review'>
                 <div className='brand'>
                   Thương hiệu: Sony
@@ -50,6 +64,7 @@ export default function information() {
                   <a href="#"><span>7 đánh giá</span></a>
                 </div>
               </div>
+              {/* GIÁ VỚI TRẠNG THÁI */}
               <div className='price-and-status'>
                 <p className='price'>
                   <span>Giá niêm yết:</span>
@@ -69,6 +84,7 @@ export default function information() {
                   <label>Tạm Hết Hàng</label>
                 </p>
               </div>
+              {/* MỘT SỐ THÔNG TIN THÊM */}
               <div className='more-information'>
                 <div class="protit">Thông tin</div>
                 <div class="prob">
@@ -77,7 +93,21 @@ export default function information() {
                   </p>
                 </div>
               </div>
+              <div className="btn">
+                <div className="number-product">
+                  <span>Số lượng: <input type="number" name="number-products" id="number-prodts" value={quantity} min="1" max="10" onChange={handleInputChange}/></span>
+                </div>
+                <div className="btn-add-t0-c4rd">
+                  <form>
+                    <button type='submit'>THÊM VÀO GIỎ HÀNG</button>
+                  </form>
+                </div>
+                <div className="btn-buy-n0w">
+                  <button>MUA NGAY</button>
+                </div>
+              </div>
             </div>
+            {/* BẢNG ƯU ĐÃI KHÁCH HÀNG */}
             <div className='incentives'>
               <ul className='policy'>
                 <li className='wrpr'>
@@ -105,8 +135,16 @@ export default function information() {
             </div>
           </div>
         </div>
-        <div className="more-in4">
-          
+        {/* MÔ TẢ SẢN PHẨM */}
+        <div className="details-description">
+          {/* MÔ TẢ CHI TIẾT SẢN PHẨM */}
+          <div className="dd" id="dd">
+            
+          </div>
+          {/* THÔNG SỐ KỸ THUẬT SẢN PHẨM */}
+          <div className="specifications">
+
+          </div>
         </div>
       </div>
       <Footer />
