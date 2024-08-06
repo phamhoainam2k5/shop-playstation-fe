@@ -93,17 +93,20 @@ export default function information() {
                   <p>Địa chỉ: KM20 QL32, Lai Xá, Hoài Đức, Hà Nội. <br/>
                   <small>Hotline: 0336172381 | 0707.199.997 (09:00 - 20:00)</small></p>
                 </li>
-                <li class="inpr">
+                <li className="inpr">
                   <img src={done} />
                   <p>Giao hàng nhanh trong 30 phút tại Thủ đô Hà Nội.</p>
                 </li>
-                <li class="wrpr">
+                <li className="wrpr">
                   <img src={done} />
                   Hoàn tiền <strong>200%</strong> nếu phát hiện hàng giả.
                 </li>
               </ul>
             </div>
           </div>
+        </div>
+        <div className="more-in4">
+          
         </div>
       </div>
       <Footer />

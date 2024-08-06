@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './header.css';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -15,9 +16,12 @@ export default function () {
   return (
     <div className='header'>
         <div className="logo">
-          <a href={'http://localhost:3000/'} title='Về trang chủ'>
+          {/* <a href={'http://localhost:3000/'} title='Về trang chủ'>
             <img src={logo} alt='GameGo'/>
-          </a>
+          </a> */}
+          <Link to="/" title='Về trang chủ'>
+            <img src={logo} alt='GameGo'/>
+          </Link>
         </div>
         <div className='search'>
           <input 
@@ -29,34 +33,34 @@ export default function () {
         </div>
         <div className='product-portfolio'>
           <nav>
-            <a href="#" title="Máy ps4, switch, xbox" className='nav-item'>
+            <Link to="/all/may-game" title="Máy ps4, switch, xbox" className='nav-item'>
               <img src={PS4} className='nav-img'/>
               <span className='nav-text'>Máy Game</span>
-            </a>
-            <a href="#" title="Đĩa game ps4,chép game ps4,game switch, game xbox, game PC" className='nav-item'>
+            </Link>
+            <Link to="/all/dia-game" title="Đĩa game ps4,chép game ps4,game switch, game xbox, game PC" className='nav-item'>
               <img src={Playstation} className='nav-img'/>
               <span className='nav-text'>Game</span>
-            </a>
-            <a href="#" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
+            </Link>
+            <Link to="/all/tay-cam" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
               <img src={GameController} className='nav-img'/>
               <span className='nav-text'>Tay Cầm</span>
-            </a>
-            <a href="#" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
+            </Link>
+            <Link to="/all/the-game" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
               <img src={CardGame} className='nav-img'/>
               <span className='nav-text'>Thẻ Game</span>
-            </a>
-            <a href="#" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
+            </Link>
+            <Link to="/all/nitendo-switch" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
               <img src={SwitchNitendo} className='nav-img'/>
               <span className='nav-text'>Switch</span>
-            </a>
-            <a href="#" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
+            </Link>
+            <Link to="/all/phu-kien" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
               <img src={accessory} className='nav-img'/>
               <span className='nav-text'>Phụ Kiện</span>
-            </a>
-            <a href="#" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
+            </Link>
+            <Link to="/all/o-cung" title="Phụ kiện ps4. phụ kiện switch, phụ kiện xbox" className='nav-item'>
               <img src={HardDriveSSD} className='nav-img'/>
               <span className='nav-text'>Ổ Cứng</span>
-            </a>
+            </Link>
           </nav>
         </div>
     </div>

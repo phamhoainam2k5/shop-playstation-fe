@@ -2,6 +2,9 @@
     width: 61%;
     margin: 10px auto;
 }
+.infor-product {
+    height: 680px;
+}
 .title-product {
     display: flex;
     padding: 10px 0;
@@ -59,24 +62,24 @@
 .details .price-and-status {
     padding-top: 20px;
 }
-.price {
+.price-and-status .price {
     font-size: 14px;
     line-height: 24px;
     padding-left: 10px;
 }
-.price > span {
+.price-and-status .price > span {
     width: 150px;
     display: inline-block;
 }
-.price strong {
+.price-and-status .price strong {
     font-size: 32px;
     color: red;
 }
-.price em {
+.price-and-status .price em {
     color: #f53;
     margin-left: 15px;
 }
-.price label {
+.price-and-status .price label {
     color: #f53;
 }
 .details .more-information {

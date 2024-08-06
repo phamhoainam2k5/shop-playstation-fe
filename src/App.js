@@ -1,7 +1,7 @@
 import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
 import './App.css';
 import Home from './components/home_page/home';
-import List from './components/list_products/list';
+import ListProducts from './components/list_products/ListProducts';
 import Information from './components/infor_product/information';
 
 function App() {
@@ -10,13 +10,16 @@ function App() {
       <Router>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/list' element={<List />} />
+          <Route path='/all/may-game' element={<ListProducts/>} />
+          <Route path='/all/dia-game' element={<ListProducts/>} />
+          <Route path='/all/tay-cam' element={<ListProducts/>} />
+          <Route path='/all/the-game' element={<ListProducts/>} />
+          <Route path='/all/nitendo-switch' element={<ListProducts/>} />
+          <Route path='/all/phu-kien' element={<ListProducts/>} />
+          <Route path='/all/o-cung' element={<ListProducts/>} />
           <Route path='/infor' element={<Information />} />
         </Routes>
       </Router>
-      {/* <Header />
-      <Home />
-      <Footer /> */}
     </>
   );
 }
