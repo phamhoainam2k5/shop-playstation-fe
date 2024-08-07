@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios'
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import QuickSupport from '../quick_support/QuickSupport';
 import "./home.css"
 
 import Banner from "../static/img/Header-Banner-PlayStation.png"
@@ -161,6 +162,7 @@ return (
             </div>
         </div>
         <Footer />
+        <QuickSupport />
     </>
     
 )

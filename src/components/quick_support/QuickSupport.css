@@ -1,0 +1,9 @@
+.icon-account, .icon-shopping-cart {
+    width: 40px;
+}
+.icon-account {
+    margin: 4px 0 0 1.3px;
+}
+.icon-shopping-cart {
+    margin: 5px 0 0 1px;
+}
