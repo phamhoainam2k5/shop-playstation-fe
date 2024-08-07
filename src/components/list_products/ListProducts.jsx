@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import QuickSupport from '../quick_support/QuickSupport';
 import "./ListProducts.css"
 
 export default function ListProducts() {
@@ -106,6 +107,7 @@ export default function ListProducts() {
             </div>
         </div>
         <Footer />
+        <QuickSupport />
     </>
   )
 }

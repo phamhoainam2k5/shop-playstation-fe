@@ -1,0 +1,27 @@
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+}
+.cart-item img {
+    margin-right: 20px;
+}
+.cart-item-info {
+    flex: 1;
+}
+.cart-item-price {
+    margin-right: 20px;
+    color: orange;
+}
+.cart-item-quantity {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+}
