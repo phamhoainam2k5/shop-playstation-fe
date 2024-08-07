@@ -83,6 +83,7 @@ export default function Home() {
 return (
     <>
         <Header />
+        
         <div className='home-container'>
             <div className='row'>
                 <div className='banner'>
@@ -161,7 +162,9 @@ return (
                 </div>
             </div>
         </div>
+
         <Footer />
+
         <QuickSupport />
     </>
     

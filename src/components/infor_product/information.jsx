@@ -17,6 +17,7 @@ export default function Information() {
   return (
     <>
       <Header />
+
       <div className='infor-container'>
         <div className='breadcrumbs'>
           <ul className='items'>
@@ -147,6 +148,7 @@ export default function Information() {
           </div>
         </div>
       </div>
+      
       <Footer />
     </>
     
