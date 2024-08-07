@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Box, Popper, Paper, Typography, Link } from '@mui/material';
 import RegistrationDialog from '../registration_dialog/RegistrationDialog';
+import LoginDialog from "../login_dialog/LoginDialog"
 import "./QuickSupport.css"
 
 import USERicon from "../static/icons/icons8-user-50.png"
@@ -8,8 +9,8 @@ import SHOPPINGcart from "../static/icons/icons8-shopping-cart-60.png"
 
 export default function QuickSupport() {
     const [anchorEl, setAnchorEl] = useState(null);
-    // const [cartAnchorEl, setCartAnchorEl] = useState(null);
     const [openRegisterDialog, setOpenRegisterDialog] = useState(false);
+    const [openLoginDialog, setOpenLoginDialog] = useState(false);
 
     const handleUserMouseEnter = (event) => {
         setAnchorEl(event.currentTarget);
@@ -19,20 +20,20 @@ export default function QuickSupport() {
         setAnchorEl(null);
     };
 
-    // const handleCartMouseEnter = (event) => {
-    //     setCartAnchorEl(event.currentTarget);
-    // };
-
-    // const handleCartMouseLeave = () => {
-    //     setCartAnchorEl(null);
-    // };
-
     const handleRegisterClick = () => {
         setOpenRegisterDialog(true);
     };
     
     const handleRegisterClose = () => {
         setOpenRegisterDialog(false);
+    };
+
+    const handleClickOpenLogin = () => {
+        setOpenLoginDialog(true);
+    };
+    
+    const handleCloseLogin = () => {
+        setOpenLoginDialog(false);
     };
 
     const handleRegisterSubmit = () => {
@@ -42,9 +43,7 @@ export default function QuickSupport() {
     };
 
     const openUser = Boolean(anchorEl);
-    // const openCart = Boolean(cartAnchorEl);
     const userId = openUser ? 'user-popover' : undefined;
-    // const cartId = openCart ? 'cart-popover' : undefined;
 
 return (
     <Box sx={{ position: 'fixed', right: 5, bottom: 500, zIndex: 1000, textAlign: 'center' }}>
@@ -63,7 +62,7 @@ return (
                         </Link>
                     </Typography>
                     <Typography variant="body1">
-                        <Link href="#" underline="hover">
+                        <Link href="#" underline="hover" onClick={handleClickOpenLogin}>
                             Đăng nhập
                         </Link>
                     </Typography>
@@ -80,13 +79,10 @@ return (
         </Box>
 
         {/* Registration Dialog */}
-        <RegistrationDialog
-            open={openRegisterDialog}
-            onClose={handleRegisterClose}
-            onSubmit={handleRegisterSubmit}
-        />
+        <RegistrationDialog open={openRegisterDialog} onClose={handleRegisterClose} onSubmit={handleRegisterSubmit}/>
 
-        
+        {/* Login Dialog */}
+        <LoginDialog open={openLoginDialog} onClose={handleCloseLogin} />
     </Box>
 )
 }
