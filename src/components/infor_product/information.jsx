@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import Header from '../header/header'
 import Footer from '../footer/footer'
+import QuickSupport from '../quick_support/QuickSupport'
 import "./information.css"
 
-import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
+// import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
 import done from "../static/icons/icons8-done-64.png"
 
-export default function InformationProduct({ productId }) {
+export default function InformationProduct() {
   const [quantity, setQuantity] = useState(1);
   const [product, setProduct] = useState(null);
+  const { productId } = useParams();
 
   const handleInputChange = (e) => {
     const value = Math.max(1, e.target.value);
@@ -24,7 +27,7 @@ export default function InformationProduct({ productId }) {
 
   if (!product) return <div>Loading...</div>;
 
-  const marketPrice = product.price * 1.09; // Market price increased by 9%
+  const marketPrice = product.price * 1.1; // Market price increased by 9%
   const savings = marketPrice - product.price;
   const savingsPercentage = ((savings / marketPrice) * 100).toFixed(0);
 
@@ -92,29 +95,35 @@ export default function InformationProduct({ productId }) {
                 </p>
                 <p className='price'>
                   <span>Trạng thái:</span>
-                  <label>{product.status === 'STOCKING' ? 'Còn hàng' : 'Tạm Hết Hàng'}</label>
+                  <label style={{ color: product.status === 'IN_STOCK' ? 'green' : 'red' }}>
+                    {product.status === 'IN_STOCK' ? 'Còn hàng' : 'Tạm Hết Hàng'}
+                  </label>
                 </p>
               </div>
               {/* MỘT SỐ THÔNG TIN THÊM */}
-              <div className='more-information'>
-                <div class="protit">Thông tin</div>
-                <div class="prob">
-                  <p>{product.moreInformation}</p>
+              {product.moreInformation && (
+                <div className='more-information'>
+                  <div className="protit">Thông tin</div>
+                  <div className="prob">
+                    <p>{product.moreInformation}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="btn">
-                <div className="number-product">
-                  <span>Số lượng: <input type="number" name="number-products" id="number-prodts" value={quantity} min="1" max="10" onChange={handleInputChange}/></span>
+              )}
+              {product.status === 'IN_STOCK' && (
+                <div className="btn">
+                  <div className="number-product">
+                    <span>Số lượng: <input type="number" name="number-products" id="number-prodts" value={quantity} min="1" max="10" onChange={handleInputChange}/></span>
+                  </div>
+                  <div className="btn-add-t0-c4rd">
+                    <form>
+                      <button type='submit'>THÊM VÀO GIỎ HÀNG</button>
+                    </form>
+                  </div>
+                  <div className="btn-buy-n0w">
+                    <button>MUA NGAY</button>
+                  </div>
                 </div>
-                <div className="btn-add-t0-c4rd">
-                  <form>
-                    <button type='submit'>THÊM VÀO GIỎ HÀNG</button>
-                  </form>
-                </div>
-                <div className="btn-buy-n0w">
-                  <button>MUA NGAY</button>
-                </div>
-              </div>
+              )}
             </div>
             {/* BẢNG ƯU ĐÃI KHÁCH HÀNG */}
             <div className='incentives'>
@@ -158,6 +167,7 @@ export default function InformationProduct({ productId }) {
       </div>
       
       <Footer />
+      <QuickSupport />
     </>
     
   )

@@ -17,7 +17,7 @@ function App() {
           <Route path='/all/nitendo-switch' element={<ListProducts/>} />
           <Route path='/all/phu-kien' element={<ListProducts/>} />
           <Route path='/all/o-cung' element={<ListProducts/>} />
-          <Route path='/infor' element={<Information />} />
+          <Route path='/infor/:productId' element={<Information />} />
           <Route path='/gio-hang' element={<ShoppingCart />} />
         </Routes>
       </Router>

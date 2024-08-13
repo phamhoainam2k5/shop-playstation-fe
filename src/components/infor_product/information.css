@@ -77,10 +77,10 @@
 }
 .price-and-status .price em {
     color: #f53;
-    margin-left: 15px;
+    margin-left: 16px;
 }
 .price-and-status .price label {
-    color: #f53;
+    font-size: 18px;
 }
 .details .more-information {
     background: #fff;

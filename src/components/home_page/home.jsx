@@ -73,10 +73,12 @@ export default function Home() {
 
     const renderProductItem = (product) => (
         <div className="product-item" key={product.id}>
-            <img src={`http://localhost:8080/img/${product.thumbnailImage}`} alt={product.productName} />
-            <h3>{truncateText(product.productName, 52)}</h3>
-            <p className="price">{formatNumber(product.price)}đ</p>
-            <p className="sold">• Sản phẩm đã bán: {product.numberOfProductsSold}</p>
+            <Link to={`/infor/${product.id}`}>
+                <img src={`http://localhost:8080/img/${product.thumbnailImage}`} alt={product.productName} />
+                <h3>{truncateText(product.productName, 52)}</h3>
+                <p className="price">{formatNumber(product.price)}đ</p>
+                <p className="sold">• Sản phẩm đã bán: {product.numberOfProductsSold}</p>
+            </Link>
         </div>
     );
 
