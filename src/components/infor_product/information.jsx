@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import Header from '../header/header'
 import Footer from '../footer/footer'
 import "./information.css"
@@ -6,13 +7,26 @@ import "./information.css"
 import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
 import done from "../static/icons/icons8-done-64.png"
 
-export default function Information() {
+export default function InformationProduct({ productId }) {
   const [quantity, setQuantity] = useState(1);
+  const [product, setProduct] = useState(null);
 
   const handleInputChange = (e) => {
     const value = Math.max(1, e.target.value);
     setQuantity(value);
   };
+
+  useEffect(() => {
+    axios.get(`http://localhost:8080/api/products/${productId}`)
+        .then(response => {setProduct(response.data);})
+        .catch(error => {console.error('There was an error fetching the product!', error);});
+  }, [productId]);
+
+  if (!product) return <div>Loading...</div>;
+
+  const marketPrice = product.price * 1.09; // Market price increased by 9%
+  const savings = marketPrice - product.price;
+  const savingsPercentage = ((savings / marketPrice) * 100).toFixed(0);
 
   return (
     <>
@@ -37,29 +51,25 @@ export default function Information() {
         <div className='infor-product'>
           {/* TIÊU ĐỀ SẢN PHẨM */}
           <div className="title-product" id='title'>
-            <h1>Máy Nintendo Switch Oled Mới - White set</h1>
-            <span>Mã SP: 4902370548532</span>
+            <h1>{product.productName}</h1>
+            <span>Mã SP: {product.id}</span>
           </div>
           {/* THÔNG TIN CƠ BẢN SẢN PHẨM */}
           <div className='product-details' id='details'>
             {/* ẢNH SẢN PHẨM */}
             <div className='image-product'>
-              <img src={MayPS5} alt="" />
+              <img src={`http://localhost:8080/img/${product.thumbnailImage}`} alt={product.productName} />
             </div>
             {/* THÔNG TIN CHUNG */}
             <div className='details'>
               {/* MÔ TẢ NGẮN GỌN SẢN PHẨM */}
               <div className='product-description'>
-                <p className='content'>
-                  Máy PS5 có khả năng chơi game cực kỳ đỉnh, trải nghiệm tải nhanh như chớp 
-                  với tốc độ cực cao của ổ cứng SSD, đắm chìm sâu hơn với hỗ trợ phản hồi xúc 
-                  giác, Âm thanh 3D và thế hệ trò chơi PlayStation hoàn toàn mới.
-                </p>
+                <p className='content'>{product.generalDescription}</p>
               </div>
               {/* HÃNG VỚI ĐÁNH GIÁ */}
               <div className='brand-and-review'>
                 <div className='brand'>
-                  Thương hiệu: Sony
+                  Thương hiệu: {product.brand}
                 </div>
                 <div className="rating">
                   <a href="#"><span>7 đánh giá</span></a>
@@ -69,29 +79,27 @@ export default function Information() {
               <div className='price-and-status'>
                 <p className='price'>
                   <span>Giá niêm yết:</span>
-                  <strong id='amount'>12.800.000₫</strong>
+                  <strong id='amount'>{product.price.toLocaleString('vi-VN')}₫</strong>
                 </p>
                 <p className='price'>
                   <span>Giá thị trường:</span>
-                  <del>14.080.000₫</del>
+                  <del>{marketPrice.toLocaleString('vi-VN')}₫</del>
                 </p>
                 <p className='price'>
                   <span>Tiết kiệm:</span>
-                  1.280.000₫
-                  <em>-9%</em>
+                  {savings.toLocaleString('vi-VN')}₫
+                  <em>-{savingsPercentage}%</em>
                 </p>
                 <p className='price'>
                   <span>Trạng thái:</span>
-                  <label>Tạm Hết Hàng</label>
+                  <label>{product.status === 'STOCKING' ? 'Còn hàng' : 'Tạm Hết Hàng'}</label>
                 </p>
               </div>
               {/* MỘT SỐ THÔNG TIN THÊM */}
               <div className='more-information'>
                 <div class="protit">Thông tin</div>
                 <div class="prob">
-                  <p>
-                    Phiên bản chính hãng của Sony Việt Nam
-                  </p>
+                  <p>{product.moreInformation}</p>
                 </div>
               </div>
               <div className="btn">

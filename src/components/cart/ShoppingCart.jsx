@@ -10,43 +10,7 @@ import "./ShoppingCart.css"
 import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
 
 export default function ShoppingCart() {
-    const [cartItems, setCartItems] = useState([
-        {
-            id: 1,
-            name: 'Sản phẩm 1',
-            price: 100000,
-            quantity: 1,
-            thumbnailImage: MayPS5
-        },
-        {
-            id: 2,
-            name: 'Sản phẩm 2',
-            price: 200000,
-            quantity: 1,
-            thumbnailImage: MayPS5
-        },
-        {
-            id: 3,
-            name: 'Sản phẩm 3',
-            price: 100000,
-            quantity: 1,
-            thumbnailImage: MayPS5
-        },
-        {
-            id: 4,
-            name: 'Sản phẩm 4',
-            price: 100000,
-            quantity: 1,
-            thumbnailImage: MayPS5
-        },
-        {
-            id: 5,
-            name: 'Sản phẩm 5',
-            price: 100000,
-            quantity: 1,
-            thumbnailImage: MayPS5
-        }
-    ]);
+    const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
 
     useEffect(() => {
@@ -105,7 +69,6 @@ return (
                                 type="number"
                                 value={item.quantity}
                                 onChange={(e) => handleQuantityChange(item.id, parseInt(e.target.value))}
-                                // inputProps={{ min: 1, max: 10 }}
                                 sx={{ width: 70, textAlign: 'center', '& input[type="number"]::-webkit-inner-spin-button': {'-webkit-appearance': 'none', margin: 0}, '& input[type="number"]::-webkit-outer-spin-button': {'-webkit-appearance': 'none', margin: 0}, '& input[type="number"]': {'-moz-appearance': 'textfield'}}}
                                 disabled
                             />
@@ -130,9 +93,6 @@ return (
             </Box>
         </Box>
         {/* end chi tiet gio hang */}
-
-        {/* footer
-        <Footer /> */}
     </>
 )
 }
