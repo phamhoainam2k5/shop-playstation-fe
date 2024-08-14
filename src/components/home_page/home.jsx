@@ -21,7 +21,7 @@ export default function Home() {
 
     useEffect (() => {  
         axios.get('http://localhost:8080/api/products/top-selling')
-        .then(response => setFeaturedProducts(response.data))
+        .then(response =>setFeaturedProducts(response.data))
         .catch(error => console.error(error));
 
         axios.get('http://localhost:8080/api/products/top-selling/category/1')

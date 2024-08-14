@@ -1,18 +1,41 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { Dialog, DialogTitle, DialogContent, DialogActions, Button, TextField, FormControlLabel, Checkbox } from '@mui/material';
 
-const LoginDialog = ({ open, onClose }) => {
+const LoginDialog = ({ open, onClose, onLoginSuccess }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [rememberMe, setRememberMe] = useState(false);
 
-    const handleLogin = () => {
-        // Handle login logic here
-        console.log("Email:", email);
-        console.log("Password:", password);
-        console.log("Remember me:", rememberMe);
-        // Close dialog after login (optional)
-        onClose();
+    const handleLogin = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/api/users/login', null, {
+                params: {
+                    email,
+                    password,
+                },
+            });
+
+            if (response.status === 200) {
+                const userData = response.data;
+
+                // Store user data in sessionStorage
+                sessionStorage.setItem('user', JSON.stringify(userData));
+
+                if (rememberMe) {
+                    localStorage.setItem('user', JSON.stringify(userData));
+                }
+
+                // Handle post-login UI updates
+                onLoginSuccess();
+
+                // Close the login dialog
+                onClose();
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+            alert('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin.');
+        }
     };
 
 return (

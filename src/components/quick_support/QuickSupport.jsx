@@ -11,6 +11,7 @@ export default function QuickSupport() {
     const [anchorEl, setAnchorEl] = useState(null);
     const [openRegisterDialog, setOpenRegisterDialog] = useState(false);
     const [openLoginDialog, setOpenLoginDialog] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(!!sessionStorage.getItem('user') || !!localStorage.getItem('user'));
 
     const handleUserMouseEnter = (event) => {
         setAnchorEl(event.currentTarget);
@@ -36,10 +37,16 @@ export default function QuickSupport() {
         setOpenLoginDialog(false);
     };
 
-    const handleRegisterSubmit = () => {
-        // Xử lý đăng ký tài khoản ở đây
-        console.log('Đăng ký tài khoản');
-        handleRegisterClose();
+    const handleLoginSuccess = () => {
+        setIsLoggedIn(true);
+        handleCloseLogin();
+    };
+
+    const handleLogout = () => {
+        sessionStorage.removeItem('user');
+        localStorage.removeItem('user');
+        setIsLoggedIn(false);
+        window.location.href = '/';
     };
 
     const openUser = Boolean(anchorEl);
@@ -56,16 +63,33 @@ return (
             {/* </IconButton> */}
             <Popper id={userId} open={openUser} anchorEl={anchorEl} placement="left-start" disablePortal>
                 <Paper elevation={3} sx={{ padding: 2, textAlign: 'center', width: 150, marginRight: 2 }}>
-                    <Typography variant="body1">
-                        <Link href="#" underline="hover" onClick={handleRegisterClick}>
-                            Đăng ký
-                        </Link>
-                    </Typography>
-                    <Typography variant="body1">
-                        <Link href="#" underline="hover" onClick={handleClickOpenLogin}>
-                            Đăng nhập
-                        </Link>
-                    </Typography>
+                        {isLoggedIn ? (
+                            <>
+                                <Typography variant="body1">
+                                    <Link href="#" underline="hover">
+                                        Quản lý tài khoản
+                                    </Link>
+                                </Typography>
+                                <Typography variant="body1">
+                                    <Link href="#" underline="hover" onClick={handleLogout}>
+                                        Đăng xuất
+                                    </Link>
+                                </Typography>
+                            </>
+                        ) : (
+                            <>
+                                <Typography variant="body1">
+                                    <Link href="#" underline="hover" onClick={handleRegisterClick}>
+                                        Đăng ký
+                                    </Link>
+                                </Typography>
+                                <Typography variant="body1">
+                                    <Link href="#" underline="hover" onClick={handleClickOpenLogin}>
+                                        Đăng nhập
+                                    </Link>
+                                </Typography>
+                            </>
+                        )}
                 </Paper>
             </Popper>
         </Box>
@@ -79,10 +103,10 @@ return (
         </Box>
 
         {/* Registration Dialog */}
-        <RegistrationDialog open={openRegisterDialog} onClose={handleRegisterClose} onSubmit={handleRegisterSubmit}/>
+        <RegistrationDialog open={openRegisterDialog} onClose={handleRegisterClose}/>
 
         {/* Login Dialog */}
-        <LoginDialog open={openLoginDialog} onClose={handleCloseLogin} />
+        <LoginDialog open={openLoginDialog} onClose={handleCloseLogin} onLoginSuccess={handleLoginSuccess}/>
     </Box>
 )
 }

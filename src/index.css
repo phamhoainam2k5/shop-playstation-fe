@@ -38,8 +38,8 @@ a:hover {
   text-overflow: ellipsis;
   white-space: normal;
 }
-.product-item h3:hover {
-  color: #004f8f;
+.product-item:hover h3 {
+  color: #0066ff;
 }
 .product-item .price {
   font-size: 18px;
