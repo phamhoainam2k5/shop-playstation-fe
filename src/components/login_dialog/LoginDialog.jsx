@@ -17,19 +17,17 @@ const LoginDialog = ({ open, onClose, onLoginSuccess }) => {
             });
 
             if (response.status === 200) {
-                const userData = response.data;
+                const userData = response.data.id;
 
-                // Store user data in sessionStorage
                 sessionStorage.setItem('user', JSON.stringify(userData));
+                console.log(sessionStorage.getItem('user'));
 
                 if (rememberMe) {
                     localStorage.setItem('user', JSON.stringify(userData));
                 }
 
-                // Handle post-login UI updates
                 onLoginSuccess();
 
-                // Close the login dialog
                 onClose();
             }
         } catch (error) {

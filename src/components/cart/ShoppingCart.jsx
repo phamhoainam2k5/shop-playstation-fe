@@ -8,15 +8,28 @@ import Header from '../header/header';
 import "./ShoppingCart.css"
 
 import MayPS5 from "../static/img/may-ps5-gia-re-P1349-1621770999197.jpg"
+import axios from 'axios';
 
 export default function ShoppingCart() {
     const [cartItems, setCartItems] = useState([]);
     const [total, setTotal] = useState(0);
+    const userId = JSON.parse(sessionStorage.getItem('user')) || JSON.parse(localStorage.getItem('user'));
+
+    useEffect(() => {
+        if (userId) {
+            axios.get(`http://localhost:8080/api/cart/${userId}/items`)
+            .then((response) => {
+                const data = Array.isArray(response.data) ? response.data : [];
+                setCartItems(data);
+            })
+            .catch(error => {console.error("There was an error fetching the cart items!", error);});
+        }
+    }, [userId]);
 
     useEffect(() => {
         let newTotal = 0;
         cartItems.forEach(item => {
-            newTotal += item.price * item.quantity;
+            newTotal += item.productPrice * item.quantity;
         });
         setTotal(newTotal);
     }, [cartItems]);
@@ -34,7 +47,6 @@ return (
     <>
         {/* header */}
         <Header />
-
         {/* Chi tiet gio hang */}
         <Box sx={{ display: 'flex', justifyContent: 'center', padding: 2 }}>
             <Box sx={{ width: '61%' }}>
@@ -55,16 +67,19 @@ return (
                 ) : (
                     cartItems.map((item) => (
                     <Box key={item.id} sx={{ display: 'flex', alignItems: 'center', marginTop: 2, padding: 2, borderBottom: '1px solid #ccc' }}>
-                        {/* <img src={`http://localhost:8080/img/${item.thumbnailImage}`} alt={item.name} width={100} height={100} style={{ marginRight: '20px' }} /> */}
-                        <img src={item.thumbnailImage} alt={item.name} width={100} height={100} style={{ marginRight: '20px' }}/>
+                        {/* ảnh sản phẩm */}
+                        <img src={`http://localhost:8080/img/${item.productImage}`} alt={item.productName} width={100} height={100} style={{ marginRight: '20px' }} />
                         <Box sx={{ flex: 1 }}>
-                            <Typography variant="h6">{item.name}</Typography>
+                            {/* tên sản phẩm */}
+                            <Typography variant="h6">{item.productName}</Typography>
                         </Box>
-                        <Typography variant="h6" sx={{ marginRight: '20px', color: 'black' }}>{item.price.toLocaleString()} đ</Typography>
+                        {/* giá sản phẩm */}
+                        <Typography variant="h6" sx={{ marginRight: '20px', color: 'black' }}>{item.productPrice.toLocaleString()} đ</Typography>
                         <Box sx={{ display: 'flex', alignItems: 'center', marginRight: '20px' }}>
                             <IconButton onClick={() => handleQuantityChange(item.id, item.quantity - 1)}>
                                 <RemoveIcon />
                             </IconButton>
+                            {/* số lượng sản phẩm đặt trước */}
                             <TextField
                                 type="number"
                                 value={item.quantity}
@@ -87,7 +102,7 @@ return (
                 {cartItems.length > 0 && (
                 <Box sx={{ marginTop: 2, display: 'flex', justifyContent: 'space-between', marginBottom: 5}}>
                     <Typography variant="h6" sx={{ marginTop: 2 }}>Tổng cộng: {total.toLocaleString()} đ</Typography>
-                    <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>Thanh toán</Button>
+                    <Button variant="contained" color="primary" sx={{ marginTop: 2 }}>Đặt hàng ngay</Button>
                 </Box>
                 )}
             </Box>
